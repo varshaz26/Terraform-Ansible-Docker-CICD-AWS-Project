@@ -28,11 +28,11 @@
         groups: docker
         append: yes
 
-   - name: Transfer application files
-    copy:
-      src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform-aws/
-      dest: /home/ec2-user/app/
-      remote_src: no
+  - name: Transfer application files
+      copy:
+        src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform-aws/
+        dest: /home/ec2-user/app/
+        remote_src: no
 
 
     - name: Build Docker image
