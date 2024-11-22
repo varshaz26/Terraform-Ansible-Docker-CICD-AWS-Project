@@ -33,21 +33,15 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve
 
-    - name: Debug Terraform Output
+    - name: Set EC2 Public IP
       run: |
-          if terraform output -raw instance_public_ip; then
-            echo "EC2 Public IP is: $(terraform output -raw instance_public_ip)"
-            EC2_PUBLIC_IP=$(terraform output -raw instance_public_ip)
-            echo "EC2_PUBLIC_IP=$EC2_PUBLIC_IP" >> $GITHUB_ENV
-          else
-            echo "Terraform output not available or EC2 instance creation failed."
-            exit 1
-          fi
+          EC2_PUBLIC_IP=$(terraform output -raw instance_public_ip)
+          echo "EC2_PUBLIC_IP=$EC2_PUBLIC_IP" >> $GITHUB_ENV
 
     - name: Debug EC2_PUBLIC_IP
       run: |
           echo "EC2_PUBLIC_IP is: ${{ env.EC2_PUBLIC_IP }}"
-    
+          
     # Step 6: Install Ansible on the GitHub Actions runner
     - name: Install Ansible
       run: |
