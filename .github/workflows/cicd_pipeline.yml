@@ -33,6 +33,9 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve
 
+    - name: Terraform Output Debug
+      run: terraform output
+
     # Step 5: Fetch EC2 Public IP and store it as an environment variable
     - name: Fetch EC2 Public IP
       id: fetch_ip
