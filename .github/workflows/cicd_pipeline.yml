@@ -35,9 +35,10 @@ jobs:
 
     # Step 5: Fetch EC2 Public IP and store it as an environment variable
     - name: Fetch EC2 Public IP
+      id: fetch_ip
       run: |
-        export EC2_PUBLIC_IP=$(terraform output -raw instance_public_ip)
-        echo "EC2_PUBLIC_IP=${EC2_PUBLIC_IP}" >> $GITHUB_ENV
+        EC2_PUBLIC_IP=$(terraform output -raw instance_public_ip)
+        echo "EC2_PUBLIC_IP=$EC2_PUBLIC_IP" >> $GITHUB_ENV
 
     # Step 6: Install Ansible on the GitHub Actions runner
     - name: Install Ansible
