@@ -34,7 +34,7 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: Disable Terraform Debug Logging
-      run: export TF_LOG=ERROR
+      run: echo "TF_LOG=ERROR" >> $GITHUB_ENV
 
     - name: Get EC2 Public IP
       run: |
