@@ -1,0 +1,41 @@
+---
+- name: Install Docker and Deploy Flask App
+  hosts: web_servers
+  become: true
+
+  tasks:
+    - name: Update yum package index (for Amazon Linux/CentOS)
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install required packages (for Amazon Linux/CentOS)
+      yum:
+        name:
+          - docker
+          - python3-pip
+        state: present
+
+    - name: Ensure Docker service is running and enabled on boot
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ec2-user to the docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+    - name: Transfer application files
+      copy:
+        src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform-aws/
+        dest: /home/ec2-user/app/
+        remote_src: no
+
+    - name: Build Docker image
+      command: docker build -t python-flask-app /home/ec2-user/app/
+
+    - name: Run Flask app in Docker
+      command: docker run -d -p 80:80 python-flask-app
