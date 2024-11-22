@@ -28,11 +28,12 @@
         groups: docker
         append: yes
 
-    - name: Transfer application files
-      copy:
-        src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform/
-        dest: /home/ec2-user/app/
-        remote_src: no
+   - name: Transfer application files
+    copy:
+      src: ./ # Assuming your Flask app is in the root of the repo
+      dest: /home/ec2-user/app/
+      remote_src: no
+
 
     - name: Build Docker image
       command: docker build -t python-flask-app /home/ec2-user/app/
