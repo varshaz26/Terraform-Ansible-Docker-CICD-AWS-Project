@@ -30,7 +30,7 @@
 
    - name: Transfer application files
     copy:
-      src: ./ # Assuming your Flask app is in the root of the repo
+      src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform/
       dest: /home/ec2-user/app/
       remote_src: no
 
