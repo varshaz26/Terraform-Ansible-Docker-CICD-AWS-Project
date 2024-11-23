@@ -28,9 +28,9 @@
         groups: docker
         append: yes
 
-    - name: Transfer application files
+    - name: Transfer application files from GitHub repo
       copy:
-        src: /mnt/c/Users/varsh/OneDrive/Desktop/terraform-aws/
+        src: ./  # Copy all files from the root of your repo
         dest: /home/ec2-user/app/
         remote_src: no
 
