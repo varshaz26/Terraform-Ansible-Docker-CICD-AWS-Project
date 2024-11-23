@@ -54,7 +54,8 @@ jobs:
         fi
         echo "EC2_PUBLIC_IP: $EC2_PUBLIC_IP"
         
-        ssh-keyscan -H $EC2_PUBLIC_IP >> ~/.ssh/known_hosts
+        # Debugging ssh-keyscan with verbose
+        ssh-keyscan -v -H $EC2_PUBLIC_IP >> ~/.ssh/known_hosts
         
         # Ensure private key is correctly passed from GitHub secrets
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -65,7 +66,6 @@ jobs:
         cat ~/.ssh/id_rsa
         cat ~/.ssh/known_hosts
 
-
      # Step 6: Install Ansible on the GitHub Actions runner
     - name: Install Ansible
       run: |
@@ -75,7 +75,7 @@ jobs:
     # Step 7: (Optional) Verify the SSH connection using Ansible
     - name: Test SSH Connection
       run: |
-        ansible -i hosts.ini web_servers -m ping
+        ansible -i hosts.ini web_servers -m ping --private-key ~/.ssh/id_rsa
         
     # Step 8: Run Ansible Playbook to install Docker on the EC2 instance
     - name: Run Ansible Playbook
