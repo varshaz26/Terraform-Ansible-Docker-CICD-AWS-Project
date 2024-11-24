@@ -3,7 +3,7 @@ name: CI/CD Pipeline for Terraform and Ansible
 on:
   push:
     branches:
-      - main  # Trigger pipeline when code is pushed to the main branch
+      - main  
 
 jobs:
   deploy:
