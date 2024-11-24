@@ -37,7 +37,7 @@ resource "aws_instance" "web_server" {
   security_groups = [aws_security_group.ssh_http_access.name]
 
   tags = {
-    Name = "networkproject"
+    Name = "TERRAFORM_INSTANCE"
   }
 }
 
