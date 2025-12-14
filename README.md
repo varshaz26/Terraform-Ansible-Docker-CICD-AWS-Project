@@ -1,6 +1,6 @@
  ### Infrastructure Automation & Deployment Using Terraform, Ansible & Docker
 
-InfraDeploy is a DevOps-focused project to **provision, configure, and deploy applications** using modern infrastructure automation tools.  
+This is a DevOps-focused project to **provision, configure, and deploy applications** using modern infrastructure automation tools.  
 The system integrates **Terraform, Ansible, Docker**, and **GitHub Actions** for CI/CD to ensure smooth and repeatable deployments.
 
 ---
@@ -68,16 +68,17 @@ Initialize Terraform workspace:
 
 ```bash
 terraform init
-
+```
 Preview infrastructure changes:
 
 ```bash
 terraform plan
-
+```
 Apply the infrastructure changes:
 
 ```bash
 terraform apply
+```
 
 ### Ansible
 
@@ -87,6 +88,7 @@ Run Ansible playbook:
 
 ```bash
 ansible-playbook -i hosts.ini site.yml
+```
 
 ### Docker
 
@@ -94,21 +96,24 @@ Build the Docker image:
 
 ```bash
 docker build -t your-image-name .
-
+```
 Run the Docker container:
 
 ```bash
 docker run -p 8000:8000 your-image-name
+```
 
 ### CI/CD Pipeline
 
 The GitHub Actions workflow `.github/workflows/cicd_pipeline.yml` automates the following steps:
 
-```bash
 # Lint and test the application code
 
 # Build the Docker image
+```bash
 docker build -t your-image-name .
-
+```
 # Deploy the containerized application
+```bash
 docker run -p 8000:8000 your-image-name
+```
