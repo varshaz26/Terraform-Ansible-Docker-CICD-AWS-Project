@@ -107,13 +107,14 @@ docker run -p 8000:8000 your-image-name
 
 The GitHub Actions workflow `.github/workflows/cicd_pipeline.yml` automates the following steps:
 
-# Lint and test the application code
+Lint and test the application code
 
-# Build the Docker image
+Build the Docker image
 ```bash
 docker build -t your-image-name .
 ```
-# Deploy the containerized application
+
+Deploy the containerized application
 ```bash
 docker run -p 8000:8000 your-image-name
 ```
