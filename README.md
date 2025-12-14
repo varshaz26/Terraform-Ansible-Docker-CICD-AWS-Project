@@ -1,87 +1,114 @@
+ ### Infrastructure Automation & Deployment Using Terraform, Ansible & Docker
 
-Infrastructure Automation and Deployment Project
-Overview
-This repository contains infrastructure-as-code and automation scripts to provision, configure, and deploy an application using Terraform, Ansible, and Docker. It also includes CI/CD pipeline configuration to automate testing and deployment processes.
+InfraDeploy is a DevOps-focused project to **provision, configure, and deploy applications** using modern infrastructure automation tools.  
+The system integrates **Terraform, Ansible, Docker**, and **GitHub Actions** for CI/CD to ensure smooth and repeatable deployments.
 
-Repository Contents
-File/Folder	Description
-.github/workflows/cicd_pipeline.yml	GitHub Actions workflow for CI/CD pipeline automation. Runs tests, builds Docker images, and deploys application.
-app.py	Main application script or placeholder for application code.
-dockerfile	Dockerfile to containerize the application.
-docker.yml	Docker Compose file (if applicable) for managing multi-container Docker applications.
-hosts.ini	Ansible inventory file listing target hosts for configuration management.
-main.tf	Terraform configuration to provision cloud infrastructure resources.
+---
 
-Features
-Infrastructure Provisioning: Using Terraform to create and manage cloud resources in a declarative manner.
+## 📌 Project Overview
 
-Configuration Management: Using Ansible to automate software installation, configuration, and orchestration on provisioned infrastructure.
+This repository contains:
 
-Containerization: Dockerfile to containerize the application, ensuring portability and consistency across environments.
+- **Terraform** scripts to provision cloud infrastructure
+- **Ansible** playbooks for configuration management
+- **Docker** files to containerize applications
+- **GitHub Actions** workflow for CI/CD automation
 
-CI/CD Automation: GitHub Actions pipeline automates build, test, and deployment workflows to accelerate delivery cycles.
+The project enables full-stack infrastructure automation, from provisioning resources to deploying containerized applications.
 
-Prerequisites
-Terraform installed (v1.0+)
+---
 
-Ansible installed (v2.9+)
+## 🚀 Features
 
-Docker installed (v20+)
+- **Infrastructure Provisioning:** Declarative creation and management of cloud resources using Terraform  
+- **Configuration Management:** Automate installation and orchestration with Ansible  
+- **Containerization:** Docker images ensure portability and consistency across environments  
+- **CI/CD Automation:** GitHub Actions pipeline for linting, testing, building, and deployment  
 
-GitHub account for Actions workflows
+---
 
-Access to cloud provider account (AWS/Azure/GCP) as configured in main.tf
+## 🛠️ Tech Stack
 
-Setup and Usage
-Terraform
+- **Infrastructure as Code:** Terraform  
+- **Configuration Management:** Ansible  
+- **Containerization:** Docker / Docker Compose  
+- **CI/CD:** GitHub Actions  
+- **Cloud Providers:** AWS / Azure / GCP (as configured in `main.tf`)  
+
+---
+
+## 📁 Repository Contents
+
+| File / Folder | Description |
+|---------------|-------------|
+| `.github/workflows/cicd_pipeline.yml` | GitHub Actions workflow automating build, test, and deployment |
+| `app.py` | Main application script or placeholder for application code |
+| `dockerfile` | Dockerfile to containerize the application |
+| `docker.yml` | Docker Compose file for multi-container applications |
+| `hosts.ini` | Ansible inventory file listing target hosts |
+| `main.tf` | Terraform configuration to provision cloud resources |
+
+---
+
+## ▶️ Prerequisites
+
+- Terraform v1.0+  
+- Ansible v2.9+  
+- Docker v20+  
+- GitHub account for Actions workflows  
+- Access to cloud provider account (AWS/Azure/GCP)  
+
+---
+
+## ▶️ Setup and Usage
+
+### Terraform
+
 Initialize Terraform workspace:
 
-bash
-Copy code
+```bash
 terraform init
-Preview the changes Terraform will make:
 
-bash
-Copy code
+Preview infrastructure changes:
+
+```bash
 terraform plan
+
 Apply the infrastructure changes:
 
-bash
-Copy code
+```bash
 terraform apply
-Ansible
+
+### Ansible
+
 Verify and edit hosts.ini to specify target hosts.
 
-Run Ansible playbook (example):
+Run Ansible playbook:
 
-bash
-Copy code
+```bash
 ansible-playbook -i hosts.ini site.yml
-Docker
+
+### Docker
+
 Build the Docker image:
 
-bash
-Copy code
+```bash
 docker build -t your-image-name .
+
 Run the Docker container:
 
-bash
-Copy code
+```bash
 docker run -p 8000:8000 your-image-name
-CI/CD Pipeline
-The GitHub Actions workflow .github/workflows/cicd_pipeline.yml automates the following:
 
-Linting and testing of the application code
+### CI/CD Pipeline
 
-Building Docker images
+The GitHub Actions workflow `.github/workflows/cicd_pipeline.yml` automates the following steps:
 
-Deploying the containerized app to specified environments
+```bash
+# Lint and test the application code
 
-Contributing
-Contributions and improvements are welcome! Please fork the repository and submit a pull request with your proposed changes.
+# Build the Docker image
+docker build -t your-image-name .
 
-License
-This project is licensed under the MIT License.
-
-Contact
-For further questions or assistance, please reach out.
+# Deploy the containerized application
+docker run -p 8000:8000 your-image-name
